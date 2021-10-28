@@ -1,3 +1,4 @@
+# 1912 연속합
 from sys import stdin
 input = stdin.readline
 
