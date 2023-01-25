@@ -1,3 +1,5 @@
+#9461 파도반 수열
+
 from sys import stdin
 input = stdin.readline
 
