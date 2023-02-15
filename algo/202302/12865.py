@@ -4,19 +4,26 @@ from sys import stdin
 input = stdin.readline
 
 N, K = map(int, input().split())
-bag = []
+weight = []
+value = []
 for _ in range(N):
     W, V = map(int, input().split())
-    bag.append((W, V))
-dp = [0]*(K+1)
-packed = [False]*N
-bag.sort()
+    weight.append(W)
+    value.append(V)
 
-def pack(x):
-    for i in range(N):
-        if x + bag[i][0] < N:
-            return
+dp = [[0 for _ in range(K+1)] for _ in range(N+1)]
 
-def is_promising(x):
-    if not packed[x]:
-        return
+for i in range(N+1):
+    for j in range(K+1):
+        if i == 0 or j == 0:
+            pass
+        elif weight[i-1] <= j:
+            dp[i][j] = max(value[i-1] + dp[i-1][j - weight[i-1]], dp[i-1][j])
+        else:
+            dp[i][j] = dp[i-1][j]
+
+print(dp[N][K])
+
+
+
+
