@@ -21,3 +21,4 @@ for _ in range(M):
 for i in range(M):
     print(ans[i])
 
+
